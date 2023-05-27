@@ -34,8 +34,22 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([$request->all()]);
-        return response()->json(['response'=> 'Congratulations']);
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'image' => 'required',
+        ]);
+
+       $image = $request->file('image');
+       $imageName = time().''.$image->getClientOriginalName();
+       $imagePath = $image->storeAs('images', $imageName, 'public');
+
+       $student = new Student;
+       $student->name       = $request->name;
+       $student->email      = $request->email;
+       $student->image      = $imagePath;
+       $student->save();
+        return response()->json(['response'=> 'Student Create Successfully']);
     }
 
     /**

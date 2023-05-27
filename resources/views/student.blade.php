@@ -14,7 +14,9 @@
     <section class="py-5">
         <div class="container">
             <div class="card">
-                <div class="card-header"> Laravel CRUD with Ajax </div>
+                <div class="card-header"> Laravel CRUD with Ajax
+                    <div id="message" class="bg-primary text-whitte p-2 text-center text-white"></div>
+                </div>
                 <div class="card-body">
                     <form action="" id="myForm" enctype="multipart/form-data">
                         @csrf
@@ -42,7 +44,9 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
     </script>
     <script>
+
         $(document).ready(function(){
+            $('#message').hide();
             $('#myForm').submit(function(e){
                 e.preventDefault();
 
@@ -57,7 +61,10 @@
                     contentType:false,
                     processData:false,
                     success: function (data) {
-                        alert(data.response);
+                        // alert(data.response);
+                        $('#message').show();
+                        $('#message').text(data.response);
+                        $('#submitBtn').prop('disabled', false);
                     },
                     error: function(e){
                         console.log(e.responseText);
