@@ -64,6 +64,9 @@
                         // alert(data.response);
                         $('#message').show();
                         $('#message').text(data.response);
+                        $("input[type='text']").val('');
+                        $("input[type='email']").val('');
+                        $("input[type='file']").val('');
                         $('#submitBtn').prop('disabled', false);
                     },
                     error: function(e){
