@@ -52,6 +52,12 @@ class StudentController extends Controller
         return response()->json(['response'=> 'Student Create Successfully']);
     }
 
+    public function manage(){
+        $students = Student::all();
+        // return view('manage', compact('studetns'));
+        return response()->json(['students' =>  $students]);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -95,5 +101,11 @@ class StudentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getStudents(){
+
+       $students = Student::all();
+       return response()->json(['students' => $students]);
     }
 }
