@@ -22,6 +22,8 @@ Route::post('/add-student', [StudentController::class, 'store'])->name('store.st
 Route::get('/get-students', function(){
     return view('students');
 });
+Route::get('editUser/{id}', [StudentController::class, 'editUser'])->name('editUser');
+Route::post('update-data', [StudentController::class, 'updateUser'])->name('updateUser');
 Route::get('/all-student', [StudentController::class, 'getStudents'])->name('getStudents');
 
 

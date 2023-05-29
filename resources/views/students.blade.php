@@ -18,6 +18,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Photo</th>
+                    <th scope="col">Action </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -46,7 +47,8 @@
                                 <td> `+(i+1)+` </td>
                                 <td>`+(response.students[i]['name'])+`</td>
                                 <td>`+(response.students[i]['email'])+`</td>
-             
+                                <td>Photo</td>
+                                <td> <a href="editUser/`+(response.students[i]['id'])+`"> Edit </a> </td>
                              </tr>
 
                             `);

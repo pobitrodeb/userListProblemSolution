@@ -108,4 +108,23 @@ class StudentController extends Controller
        $students = Student::all();
        return response()->json(['students' => $students]);
     }
+
+    public function editUser($id){
+       $student = Student::where('id', $id)->get();
+    //    $student = Student::find($id);
+       return view('edit-user', compact('student'));
+    }
+
+    public function updateUser(Request $request){
+      $student =  Student::find($request->id);
+      $student->name = $request->name;
+      $student->email = $request->email;
+      if($request->file('image')){
+        $image = $request->file('image');
+        $imageName = time().''.$image->getClientOriginalName();
+        $imagePath = $image->storeAs('images', $imageName, 'public');
+      }
+      $student->save();
+      return response()->json(['result' => 'Data update successfully']);
+    }
 }
