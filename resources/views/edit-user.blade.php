@@ -67,6 +67,7 @@
             success: function (response) {
                 $('#message').show();
                 $('#message').text(response.result);
+                window.open('/get-students', "_self");
             },
             error: function(e){
                 console.log(e.responseText);
