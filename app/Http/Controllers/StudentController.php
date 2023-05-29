@@ -127,4 +127,10 @@ class StudentController extends Controller
       $student->save();
       return response()->json(['result' => 'Data update successfully']);
     }
+
+    public function deleteUser($id){
+
+        Student::where('id', $id)->delete();
+        return response()->json(['result' => 'Data update successfully']);
+    }
 }

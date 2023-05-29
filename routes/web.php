@@ -24,6 +24,7 @@ Route::get('/get-students', function(){
 });
 Route::get('editUser/{id}', [StudentController::class, 'editUser'])->name('editUser');
 Route::post('update-data', [StudentController::class, 'updateUser'])->name('updateUser');
+Route::post('delete-data/{id}', [StudentController::class, 'deleteUser'])->name('deleteUser');
 Route::get('/all-student', [StudentController::class, 'getStudents'])->name('getStudents');
 
 

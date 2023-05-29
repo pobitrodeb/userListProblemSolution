@@ -48,7 +48,11 @@
                                 <td>`+(response.students[i]['name'])+`</td>
                                 <td>`+(response.students[i]['email'])+`</td>
                                 <td>Photo</td>
-                                <td> <a href="editUser/`+(response.students[i]['id'])+`"> Edit </a> </td>
+                                <td>
+                                    <a href="editUser/`+(response.students[i]['id'])+`"> Edit </a>
+                                    <a class="deleteData" data-id="deleteUser/`+(response.students[i]['id'])+`"> Delete </a>
+                                </td>
+
                              </tr>
 
                             `);
@@ -62,6 +66,23 @@
                     console.log(e.responseText);
                 }
             });
+
+           $("#students-table").on("click",".deleteData", function(){
+               var userID = $(this).attr('data-id');
+               var obj = $(this);
+               $.ajax({
+                type: "GET",
+                url: "delete-data/"+userID,
+
+                success: function (response) {
+                    $(obj).parent().parent().remove()
+                    $('#message').show();
+                    $('#message').text(response.result);
+                },error:function(e){
+                    console.log(e.responseText);
+                }
+               });
+           })
         })
     </script>
 
